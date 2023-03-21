@@ -5,9 +5,10 @@ import GithubContext from '../context/github/GithubContext'
 import { useParams } from 'react-router-dom'
 import Spinner from '../components/layout/Spinner'
 import RepoList from '../components/repos/RepoList'
+import { getUserAndRepos } from '../context/github/GithubActions'
 
 function User() {
-    const { user, loading, repos, dispatch, getUserRepos } = useContext(GithubContext)
+    const { user, loading, repos, dispatch } = useContext(GithubContext)
 
     const params = useParams()
 
@@ -20,7 +21,6 @@ function User() {
 
         getUserData()
     }, [dispatch, params.login])
-
 
     const {
         name,
@@ -38,7 +38,6 @@ function User() {
         public_gists,
         hireable,
     } = user
-
 
     if (loading) {
         return <Spinner />
