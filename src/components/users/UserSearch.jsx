@@ -19,7 +19,7 @@ function UserSearch() {
         } else {
             dispatch({ type: 'SET_LOADING' })
             const users = await searchUsers(text)
-            dispatchEvent({ type: 'GET_USERS', payload: users })
+            dispatch({ type: 'GET_USERS', payload: users })
 
             setText('')
         }
